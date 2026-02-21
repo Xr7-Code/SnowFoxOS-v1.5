@@ -1,0 +1,33 @@
+# ============================================================
+#  SnowFoxOS v2 — Mako Notification Config
+# ============================================================
+
+sort=-time
+layer=overlay
+background-color=#1a1a1aee
+width=360
+height=120
+border-size=2
+border-color=#9B59B6
+border-radius=10
+icons=1
+max-icon-size=48
+default-timeout=5000
+ignore-timeout=0
+font=Noto Sans 11
+text-color=#ffffff
+padding=12
+margin=10,10,10,0
+
+[urgency=low]
+border-color=#555555
+default-timeout=3000
+
+[urgency=normal]
+border-color=#9B59B6
+default-timeout=5000
+
+[urgency=high]
+border-color=#E67E22
+background-color=#2a1a0aee
+default-timeout=0

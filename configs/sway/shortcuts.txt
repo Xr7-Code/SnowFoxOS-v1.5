@@ -1,0 +1,40 @@
+╔══════════════════════════════════════════════════════╗
+║           SnowFoxOS v2 — Keyboard Shortcuts          ║
+╠══════════════════════════════════════════════════════╣
+║  PROGRAMME                                           ║
+║  Mod + Enter    Terminal (foot)                      ║
+║  Mod + B        Firefox                              ║
+║  Mod + E        Dateimanager (Thunar)                ║
+║  Mod + C        VSCodium                             ║
+║  Mod + R        App-Launcher (Wofi)                  ║
+║  Mod + S        SnowFox Store                        ║
+║  Mod + N        WiFi-Manager                         ║
+║  Mod + X        Bildschirm sperren                   ║
+║  Mod + P        Power Menu                           ║
+║  Mod + F1       Diese Hilfe                          ║
+╠══════════════════════════════════════════════════════╣
+║  SCREENSHOTS                                         ║
+║  Print          Ganzer Bildschirm                    ║
+║  Mod + Print    Bereich auswählen (Datei)            ║
+║  Mod + Shift+S  Bereich → Zwischenablage             ║
+╠══════════════════════════════════════════════════════╣
+║  FENSTER                                             ║
+║  Mod + Q        Fenster schließen                    ║
+║  Mod + F        Vollbild                             ║
+║  Mod + Space    Floating toggle                      ║
+║  Mod + H/V      Split horizontal/vertikal            ║
+║  Mod + W        Tabbed Layout                        ║
+║  Mod + T        Split Layout                         ║
+║  Mod + Pfeile   Fokus wechseln                       ║
+║  Mod+Shift+Pf.  Fenster verschieben                  ║
+║  Mod + Shift+R  Resize Mode                          ║
+╠══════════════════════════════════════════════════════╣
+║  WORKSPACES                                          ║
+║  Mod + 1–9      Workspace wechseln                   ║
+║  Mod + Tab      Nächster Workspace                   ║
+║  Mod+Shift+1–9  Fenster zu Workspace                 ║
+╠══════════════════════════════════════════════════════╣
+║  SYSTEM                                              ║
+║  Mod + Shift+E  Power Menu / Sway beenden            ║
+╚══════════════════════════════════════════════════════╝
+                  Drücke Enter zum Schließen

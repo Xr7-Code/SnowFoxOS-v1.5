@@ -1,0 +1,61 @@
+/* ============================================================
+   SnowFoxOS v2 — Wofi Style
+   ============================================================ */
+
+window {
+  background-color: rgba(10, 10, 10, 0.96);
+  border: 2px solid #9B59B6;
+  border-radius: 12px;
+  font-family: "Noto Sans";
+  font-size: 14px;
+}
+
+#input {
+  background: rgba(26, 26, 26, 0.9);
+  border: 1px solid #333333;
+  border-radius: 8px;
+  color: #ffffff;
+  padding: 10px 14px;
+  margin: 10px;
+  outline: none;
+}
+
+#input:focus {
+  border-color: #9B59B6;
+}
+
+#scroll {
+  margin: 0 6px 6px 6px;
+}
+
+#inner-box {
+  background: transparent;
+}
+
+.entry {
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin: 2px 4px;
+  color: #cccccc;
+  transition: all 0.15s ease;
+}
+
+.entry:selected {
+  background: rgba(155, 89, 182, 0.25);
+  color: #ffffff;
+  border-left: 3px solid #9B59B6;
+}
+
+.entry:hover {
+  background: rgba(155, 89, 182, 0.12);
+  color: #ffffff;
+}
+
+.text {
+  color: inherit;
+}
+
+.sub-text {
+  color: #666666;
+  font-size: 12px;
+}

@@ -1,0 +1,168 @@
+# ============================================================
+#  SnowFoxOS v2 — Sway Config
+# ============================================================
+
+set $mod Mod4
+
+# Farben
+set $purple  #9B59B6
+set $orange  #E67E22
+set $bg      #0a0a0a
+set $bg2     #1a1a1a
+set $fg      #ffffff
+set $dim     #555555
+
+# Programme
+set $term        foot
+set $browser     firefox-esr
+set $filemanager thunar
+set $editor      codium
+set $launcher    wofi --show drun
+set $store       foot -e snowfox-store
+set $wifi        foot -e snowfox-wifi
+set $power       snowfox-power
+set $locker      swaylock -f -c 0a0a0a --ring-color 9B59B6 --key-hl-color E67E22 --line-color 00000000 --text-color ffffff
+
+font pango:Noto Sans 10
+
+# Fenster-Farben
+client.focused          $purple  $bg2     $fg      $orange   $purple
+client.focused_inactive $dim     $bg      $fg      $dim      $dim
+client.unfocused        $dim     $bg      $dim     $dim      $dim
+client.urgent           $orange  $bg2     $fg      $orange   $orange
+
+default_border pixel 2
+default_floating_border pixel 2
+gaps inner 8
+gaps outer 4
+smart_gaps on
+smart_borders on
+
+# Wallpaper
+output * bg ~/Pictures/SnowFoxOS/snowfox_dark.png fill
+
+# Tastatur
+input "type:keyboard" {
+  xkb_layout de
+  xkb_options caps:escape
+  repeat_delay 300
+  repeat_rate 30
+}
+
+input "type:touchpad" {
+  dwt enabled
+  tap enabled
+  natural_scroll enabled
+  middle_emulation enabled
+}
+
+# Autostart
+exec_always --no-startup-id waybar
+exec --no-startup-id mako
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id nm-applet --indicator
+exec --no-startup-id blueman-applet
+exec --no-startup-id pipewire
+exec --no-startup-id wireplumber
+
+# Programme starten
+bindsym $mod+Return      exec $term
+bindsym $mod+b           exec $browser
+bindsym $mod+e           exec $filemanager
+bindsym $mod+c           exec $editor
+bindsym $mod+r           exec $launcher
+bindsym $mod+s           exec $store
+bindsym $mod+n           exec $wifi
+bindsym $mod+x           exec $locker
+bindsym $mod+p           exec $power
+bindsym $mod+F1          exec foot -e bash -c 'cat ~/.config/sway/shortcuts.txt; read'
+
+# Screenshots
+bindsym Print            exec grim ~/Pictures/screenshot_$(date +%Y%m%d_%H%M%S).png
+bindsym $mod+Print       exec grim -g "$(slurp)" ~/Pictures/screenshot_$(date +%Y%m%d_%H%M%S).png
+bindsym $mod+shift+s     exec grim -g "$(slurp)" - | wl-copy
+
+# Audio / Helligkeit
+bindsym XF86AudioRaiseVolume  exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+bindsym XF86AudioLowerVolume  exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+bindsym XF86AudioMute         exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+bindsym XF86AudioMicMute      exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+bindsym XF86MonBrightnessUp   exec brightnessctl set 5%+
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86AudioPlay         exec playerctl play-pause
+bindsym XF86AudioNext         exec playerctl next
+bindsym XF86AudioPrev         exec playerctl previous
+
+# Fensterverwaltung
+bindsym $mod+q           kill
+bindsym $mod+f           fullscreen toggle
+bindsym $mod+space       floating toggle
+bindsym $mod+h           splith
+bindsym $mod+v           splitv
+bindsym $mod+a           focus parent
+bindsym $mod+w           layout tabbed
+bindsym $mod+t           layout toggle split
+bindsym $mod+minus       scratchpad show
+bindsym $mod+Shift+minus move scratchpad
+
+# Fokus
+bindsym $mod+Left        focus left
+bindsym $mod+Right       focus right
+bindsym $mod+Up          focus up
+bindsym $mod+Down        focus down
+bindsym $mod+Shift+Left  move left
+bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+Up    move up
+bindsym $mod+Shift+Down  move down
+
+# Workspaces
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+Tab         workspace next
+bindsym $mod+Shift+Tab   workspace prev
+
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+
+# Resize Mode
+mode "resize" {
+  bindsym Left  resize shrink width  10px
+  bindsym Right resize grow   width  10px
+  bindsym Up    resize shrink height 10px
+  bindsym Down  resize grow   height 10px
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+bindsym $mod+Shift+r mode "resize"
+
+# Floating Rules
+for_window [app_id="galculator"]           floating enable, resize set 400 500
+for_window [app_id="blueman-manager"]      floating enable
+for_window [app_id="nm-connection-editor"] floating enable
+for_window [app_id="lxappearance"]         floating enable
+for_window [title="SnowFox.*"]             floating enable
+
+# Idle / Autolock
+exec swayidle -w \
+  timeout 300  'swaylock -f -c 0a0a0a --ring-color 9B59B6' \
+  timeout 600  'swaymsg "output * dpms off"' \
+  resume       'swaymsg "output * dpms on"' \
+  before-sleep 'swaylock -f -c 0a0a0a --ring-color 9B59B6'
+
+bindsym $mod+Shift+e exec snowfox-power
+
+include /etc/sway/config.d/*

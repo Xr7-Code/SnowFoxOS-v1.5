@@ -1,0 +1,112 @@
+/* ============================================================
+   SnowFoxOS v2 — Waybar Style
+   Farbschema: Lila #9B59B6 / Orange #E67E22
+   ============================================================ */
+
+* {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 13px;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+}
+
+window#waybar {
+  background: rgba(10, 10, 10, 0.92);
+  color: #ffffff;
+  border-bottom: 2px solid #9B59B6;
+}
+
+/* Workspaces */
+#workspaces button {
+  padding: 0 10px;
+  color: #888888;
+  background: transparent;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+#workspaces button:hover {
+  background: rgba(155, 89, 182, 0.2);
+  color: #ffffff;
+}
+
+#workspaces button.focused {
+  color: #9B59B6;
+  border-bottom: 2px solid #9B59B6;
+}
+
+#workspaces button.urgent {
+  color: #E67E22;
+  border-bottom: 2px solid #E67E22;
+}
+
+/* Mode (resize etc.) */
+#mode {
+  background: #9B59B6;
+  color: #ffffff;
+  padding: 0 10px;
+  font-weight: bold;
+}
+
+/* Uhr — zentriert, lila */
+#clock {
+  color: #9B59B6;
+  font-weight: bold;
+  padding: 0 12px;
+}
+
+/* Alle rechten Module */
+#cpu, #memory, #battery, #network, #bluetooth,
+#pulseaudio, #tray, #custom-power {
+  padding: 0 10px;
+  color: #cccccc;
+}
+
+#cpu:hover, #memory:hover, #battery:hover,
+#network:hover, #pulseaudio:hover {
+  color: #ffffff;
+  background: rgba(155, 89, 182, 0.15);
+}
+
+/* Battery States */
+#battery.good    { color: #aaaaaa; }
+#battery.warning { color: #E67E22; }
+#battery.critical {
+  color: #ff4444;
+  animation: blink 1s linear infinite;
+}
+
+@keyframes blink {
+  to { color: #ffffff; background: #ff4444; }
+}
+
+/* Network */
+#network.disconnected { color: #555555; }
+
+/* Power Button */
+#custom-power {
+  color: #E67E22;
+  font-size: 16px;
+  padding: 0 14px 0 10px;
+}
+
+#custom-power:hover {
+  color: #ffffff;
+  background: rgba(230, 126, 34, 0.2);
+}
+
+/* Window-Titel */
+#window {
+  color: #888888;
+  padding: 0 8px;
+  font-style: italic;
+}
+
+/* Tray */
+#tray {
+  padding: 0 8px;
+}
+
+#tray > .passive { -gtk-icon-effect: dim; }
+#tray > .needs-attention { -gtk-icon-effect: highlight; }
