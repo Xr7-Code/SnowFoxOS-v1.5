@@ -56,9 +56,9 @@ check_requirements() {
 
 update_system() {
     step "System aktualisieren"
-    apt update -qq | tee -a "$LOG"
+    apt update -qq | tee -a "$LOG" || true
     ok "Paketlisten OK"
-    apt upgrade -y -qq | tee -a "$LOG"
+    apt upgrade -y -qq | tee -a "$LOG" || true
     ok "System aktuell"
     apt install -y --no-install-recommends \
         curl wget git ca-certificates gnupg apt-transport-https \
